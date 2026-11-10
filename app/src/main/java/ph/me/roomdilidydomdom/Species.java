@@ -24,4 +24,9 @@ public class Species {
         this.health = health;
         this.startingWeapon = startingWeapon;
     }
+
+    @Override
+    public String toString() {
+        return "\n" + name + "\n" + description + "\nAim Speed: " + aimSpeed + "%\nReload Speed: " + reloadSpeed + "%\nMove Speed: " + moveSpeed + "%\nHealth: " + health + "\nStarting Weapon: " + startingWeapon + "\n";
+    }
 }

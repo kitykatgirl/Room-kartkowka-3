@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">room dilidy dom dom</string>
+    <string-array name="weapons">
+        <item>Pistol</item>
+        <item>Sawed Off</item>
+        <item>Revolver</item>
+        <item>Derringer</item>
+        <item>Machine Pistol</item>
+        <item>Light Pistol</item>
+        <item>Governor</item>
+        <item>Mini SMG</item>
+        <item>SMG</item>
+        <item>Rapid-fire revolver</item>
+    </string-array>
 </resources>
