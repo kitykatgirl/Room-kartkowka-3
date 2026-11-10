@@ -1,23 +1,25 @@
 package ph.me.roomdilidydomdom;
 
-import androidx.room3.Dao;
-import androidx.room3.Delete;
-import androidx.room3.Insert;
-import androidx.room3.Query;
-import androidx.room3.Update;
+import androidx.room.Dao;
+import androidx.room.Delete;
+import androidx.room.Insert;
+import androidx.room.Query;
+import androidx.room.Update;
+
+import java.util.List;
 
 @Dao//Ming
 public interface SpeciesDAO {
     @Insert
-    public void InsertSpeciesToDB(Species species);
+    public void insertSpeciesToDB(Species species);
     @Insert
-    public void InsertMultipleSpeciesToDB(Species... species);
+    public void insertMultipleSpeciesToDB(Species... species);
     @Delete
-    public void DeleteFromDB(Species species);
+    public void deleteFromDB(Species species);
     @Update
-    public void UpdateSpecies(Species species);
+    public void updateSpecies(Species species);
     @Query("SELECT * FROM species")
-    public void ReturnAllSpecies();
+    public List<Species> returnAllSpecies();
     @Query("SELECT * FROM Species WHERE LOWER(startingWeapon) = LOWER(:weapon)")
-    public void ReturnSpeciesByStarterWeapon();
+    public List<Species> returnSpeciesByStarterWeapon(String weapon);
 }

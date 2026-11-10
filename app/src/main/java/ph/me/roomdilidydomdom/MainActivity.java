@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.room.Room;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,5 +30,9 @@ public class MainActivity extends AppCompatActivity {
             // 6. alertDialog to confirm deletion
             // 7. Meow meow meow meow meow meow meow meow meow meow :3c
         });
+
+        SpeciesDatabase speciesDatabase = Room.databaseBuilder(getApplicationContext(),SpeciesDatabase.class,"species_db").allowMainThreadQueries().build();
+
+        speciesDatabase.returnSpeciesDAO().insertSpeciesToDB(new Species("Placeholder","Lorem ipsum",100,100,100,100,"None"));
     }
 }
