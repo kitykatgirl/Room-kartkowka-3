@@ -1,5 +1,6 @@
 package ph.me.roomdilidydomdom;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -113,11 +114,28 @@ public class MainActivity extends AppCompatActivity {
         listViewSpecies.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-                speciesDatabase.returnSpeciesDAO().deleteFromDB(speciesList.get(i));
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
 
-                speciesList.remove(i);
+                builder.setMessage("Are you sure you want to delete " + speciesList.get(i).name.toString());
 
-                adapter.notifyDataSetChanged();
+                builder.setTitle("Deleting item");
+
+                builder.setCancelable(false);
+
+                builder.setPositiveButton("Yes", (DialogInterface.OnClickListener) (dialog, which) -> {
+                    speciesDatabase.returnSpeciesDAO().deleteFromDB(speciesList.get(i));
+
+                    speciesList.remove(i);
+
+                    adapter.notifyDataSetChanged();
+                });
+
+                builder.setNegativeButton("No", (DialogInterface.OnClickListener) (dialog, which) -> {
+                    dialog.cancel();
+                });
+                AlertDialog alertDialog = builder.create();
+
+                alertDialog.show();
 
                 return false;
             }
